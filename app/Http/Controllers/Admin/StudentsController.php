@@ -14,15 +14,15 @@ class StudentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $students = Students::orderBy('id', 'desc')->paginate(5);
+        $students = Students::where('name', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
 
         return view('admin.students.index', [
-            'students' => $students
+            'students' => $students,
+            'search_value' => $request->search
         ]);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -45,14 +45,14 @@ class StudentsController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password'=>'required',
-            'content'=>'required',
-            'fathername'=>'required',
-            'address'=>'required',
-            'rollno'=>'required',
+            'password' => 'required',
+            'content' => 'required',
+            'fathername' => 'required',
+            'address' => 'required',
+            'rollno' => 'required',
             'class' => 'required',
-            'subject'=>'required',
-            'classteacher'=>'required'
+            'subject' => 'required',
+            'classteacher' => 'required'
         ]);
 
         Students::create($request->post());
@@ -82,6 +82,11 @@ class StudentsController extends Controller
         return view('admin.students.edit', compact('student'));
     }
 
+
+    public function news(Students $student)
+    {
+        return view('admin.students.news', compact('student'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -113,4 +118,4 @@ class StudentsController extends Controller
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Students has been deleted successfully');
     }
-} 
+}

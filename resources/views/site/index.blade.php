@@ -1,10 +1,8 @@
-@extends('layouts.home')
+@extends('layouts.default')
 
 @section('title', 'Home Page')
 
 @section('content')
-
-<!-- partial -->
 <div class="flash-news-banner">
     <div class="container">
         <div class="d-lg-flex align-items-center justify-content-between">
@@ -46,21 +44,23 @@
             <div class="col-xl-4 stretch-card grid-margin">
                 <div class="card bg-dark text-white">
                     <div class="card-body">
-                        <h2>Latest news</h2>
+                        <h2> Latest News </h2>
 
+                        @foreach($news as $item)
                         <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
                             <div class="pr-3">
-                                <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
+                                <h5>{{$item->content}}</h5>
                                 <div class="fs-12">
-                                    <span class="mr-2">Photo </span>10 Minutes ago
+                                    <span class="mr-2">{{$item->created_by}} </span>{{$item->category}}
                                 </div>
                             </div>
                             <div class="rotate-img">
                                 <img src="assets/images/dashboard/home_1.jpg" alt="thumb" class="img-fluid img-lg" />
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
+                        <!-- <div class="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
                             <div class="pr-3">
                                 <h5>Virus Kills Member Of Advising Iran’s Supreme</h5>
                                 <div class="fs-12">
@@ -82,7 +82,7 @@
                             <div class="rotate-img">
                                 <img src="assets/images/dashboard/home_3.jpg" alt="thumb" class="img-fluid img-lg" />
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -112,32 +112,32 @@
             <div class="col-lg-9 stretch-card grid-margin">
                 <div class="card">
                     <div class="card-body">
+                        @foreach($news as $item)
                         <div class="row">
                             <div class="col-sm-4 grid-margin">
                                 <div class="position-relative">
                                     <div class="rotate-img">
-                                        <img src="assets/images/dashboard/home_4.jpg" alt="thumb" class="img-fluid" />
+                                        <img src="/images/{{ $item->image }}" alt="thumb" class="img-fluid" />
                                     </div>
                                     <div class="badge-positioned">
-                                        <span class="badge badge-danger font-weight-bold">Flash news</span>
+                                        <span class="badge badge-danger font-weight-bold">{{$item->category}} </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-8  grid-margin">
                                 <h2 class="mb-2 font-weight-600">
-                                    South Korea’s Moon Jae-in sworn in vowing to address
-                                    North
+                                    {{$item->title}}
                                 </h2>
                                 <div class="fs-13 mb-2">
-                                    <span class="mr-2">Photo </span>10 Minutes ago
+                                    <span class="mr-2">{{$item->created_by}} </span>{{$item->created_at}}
                                 </div>
                                 <p class="mb-0">
-                                    Lorem Ipsum has been the industry's standard dummy
-                                    text ever since the 1500s, when an
+                                    {{$item->content}}
                                 </p>
                             </div>
                         </div>
-
+                        @endforeach
+                        <!--    
                         <div class="row">
                             <div class="col-sm-4 grid-margin">
                                 <div class="position-relative">
@@ -186,7 +186,7 @@
                                     text ever since the 1500s, when an
                                 </p>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -548,9 +548,4 @@
         </div>
     </div>
 </div>
-<!-- main-panel ends -->
-<!-- container-scroller ends -->
-
-
-
 @stop

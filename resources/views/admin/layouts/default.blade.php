@@ -1,27 +1,40 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="Saquib" content="Blade">
-    <title>@yield('title')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Starter</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css?v=3.2.0">
 </head>
 
-<body>
-    <div class="container">
-        <header class="row">
-            @include('admin.includes.header')
-        </header>
-        <div id="main" class="row">
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        @include('admin.includes.header')
+
+        @include('admin.includes.sidebar')
+
+        <div class="content-wrapper">
             @yield('content')
         </div>
-        <footer class="row">
-            @include('admin.includes.footer')
-        </footer>
+
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="p-3">
+                <h5>Title</h5>
+                <p>Sidebar content</p>
+            </div>
+        </aside>
+
+        @include('admin.includes.footer')
     </div>
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/dist/js/adminlte.min.js?v=3.2.0"></script>
 </body>
 
 </html>

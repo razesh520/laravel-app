@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('students_id');
             $table->string('title');
             $table->string('slug');
             $table->string('category');
             $table->text('content');
             $table->string('image');
-            $table->timestamp('created_at');
             $table->string('created_by');
-            // $table->timestamps();
+            $table->string('updated_by');
+            $table->timestamps();
+            $table->foreign('students_id')
+            ->references('id')->on('students')->onDelete('cascade');
         });
     }
 
