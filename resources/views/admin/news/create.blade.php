@@ -24,16 +24,22 @@
             @csrf
             <div class="row">
 
-                <select class="form-control m-bot15" name="students_id">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <select class="form-control m-bot15" name="category_id">
+                            @if ($categories->count())
+                                @foreach($categories as $item)
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                        </select>
 
-                    @if ($students->count())
+                        @error('category_id')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
 
-                    @foreach($students as $student)
-                    <option value="{{ $student->id }}">{{ $student->name }}</option>
-                    @endforeach
-                    @endif
-
-                </select>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Title:</strong>

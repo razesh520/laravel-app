@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="rotate-img">
-                                <img src="assets/images/dashboard/home_1.jpg" alt="thumb" class="img-fluid img-lg" />
+                                <img src="{{ asset('images/' . $item->image) }}" alt="thumb" class="img-fluid img-lg" />
                             </div>
                         </div>
                         @endforeach

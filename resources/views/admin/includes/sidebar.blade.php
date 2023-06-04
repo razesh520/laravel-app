@@ -35,46 +35,23 @@ list($controller, $action) = explode('@', $controllerAction);
                         </p>
                     </a>    
                 </li>
-                <li class="nav-item <?= ($controller == 'PostsController') ? 'menu-open' : ''?>">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-newspaper"></i>
-                        <p>
-                            Manage Posts
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('posts.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Post</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('posts.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create Post</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item <?= ($controller == 'StudentsController') ? 'menu-open' : ''?>">
+                <li class="nav-item <?= ($controller == 'CategoriesController') ? 'menu-open' : ''?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Manage Students
+                            Manage Categories
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('students.index','')}}" class="nav-link">
+                            <a href="{{route('categories.index','')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Students</p>
+                                <p>Manage Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('students.create')}}" class="nav-link">
+                            <a href="{{route('categories.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create Student</p>
                             </a>
@@ -100,6 +77,29 @@ list($controller, $action) = explode('@', $controllerAction);
                             <a href="{{route('news.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create News</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <?= ($controller == 'MenuController') ? 'menu-open' : ''?>">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Manage Menu
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('menus.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Menu</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('menus.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Menu</p>
                             </a>
                         </li>
                     </ul>

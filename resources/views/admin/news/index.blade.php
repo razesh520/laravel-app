@@ -49,7 +49,7 @@
                 @foreach ($items as $news)
                 <tr>
                     <td>{{ $news->id }}</td>
-                    <td>{{$news->students_id}}</td>
+                    <td>{{$news->category_id}}</td>
                     <td>{{ $news->title }}</td>
                     <td>{{ $news->slug }}</td>
                     <td>{{ $news->category }}</td>

@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\News;
-use App\Models\Students;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use PHPUnit\Framework\MockObject\Builder\Stub;
 
 class NewsController extends Controller
 {
     public function index(Request $request)
     {
-
         $news = News::where('title', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
         // $news = News::all(); 
         // $items = News::orderBy('id', 'desc')->paginate(5);
@@ -27,25 +25,25 @@ class NewsController extends Controller
 
     public function create(Request $request)
     {
-        $students = Students::all();
+        $categories = Category::all();
 
 
         return view('admin.news.create', [
-            'students' => $students,
+            'categories' => $categories,
         ]);
     }
 
     public function store(Request $request)
     {
-        print_r($request->post('students_id'));
+        print_r($request->post('category_id'));
 
 
         $request->validate([
+            'category_id' => 'required',
             'title' => 'required',
             'slug' => 'required',
-            'category' => 'required',
             'content' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $input = $request->all();
@@ -60,7 +58,7 @@ class NewsController extends Controller
 
 
         $input = [
-            'students_id' => $request->post('students_id'),
+            'category_id' => $request->post('category_id'),
             'title' => $request->post('title'),
             'slug' => $request->post('slug'),
             'category' => $request->post('category'),
@@ -94,9 +92,9 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $request->validate([
+            'category_id' => 'required',
             'title' => 'required',
             'slug' => 'required',
-            'category' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

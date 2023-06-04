@@ -1,3 +1,10 @@
+<?php
+
+use App\Models\Menu;
+
+$menus = Menu::orderBy('id', 'desc')->get();
+?>
+
 <!-- partial:partials/_navbar.html -->
 <header id="header">
   <div class="container">
@@ -50,10 +57,12 @@
                     <i class="mdi mdi-close"></i>
                   </button>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
+                @foreach ($menus as $key => $menu)
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{$menu->url}}">{{$menu->title}}</a>
                 </li>
-                <li class="nav-item">
+                @endforeach
+                <!-- <li class="nav-item">
                   <a class="nav-link" href="pages/magazine.html">MAGAZINE</a>
                 </li>
                 <li class="nav-item">
@@ -73,7 +82,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="pages/contactus.html">Contact</a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>

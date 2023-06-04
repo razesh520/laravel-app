@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\MenuController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\PostsController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\Admin\StudentsController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\MagzineController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +36,9 @@ Route::post('save', [AuthController::class, 'save'])->name('save');
 
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => 'auth'], function () {
-        Route::resource('posts', PostsController::class);
-        Route::resource('students', StudentsController::class,[]);
-        Route::post('students/news', array('as'=>'students.news', 'uses'=>'StudentsController@news'));
+        Route::resource('categories', CategoryController::class);
         Route::resource('news', NewsController::class);
+        Route::resource('menus', MenuController::class); 
     });
     Route::match(['get', 'post'], '/signout', [AuthController::class, 'signout']);
 });
