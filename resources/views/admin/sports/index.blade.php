@@ -1,6 +1,6 @@
 @extends('admin.layouts.default')
 
-@section('title', 'Manage Category')
+@section('title', 'Manage Sports')
 
 @section('content')
 
@@ -9,16 +9,15 @@
 
         <div class="row">
             <div class="col-md-12">
-                <h2>Manage Category</h2>
+                <h2>Manage Sports</h2>
             </div>
             <div class="col-md-12 mb-5">
                 <div clas="col-md-6" style="float:left;">
-                    <a class="btn btn-success" href="{{ route('categories.create') }}"> Create Category</a>
+                    <a class="btn btn-success" href="{{ route('sports.create') }}"> Create Sports</a>
                 </div>
                 <div class="col-md-6" style="float:right;">
-                    <form action="{{ route('categories.index') }}" method="GET" role="search">
-                        @csrf
-                        <input type="search" class="form-control" placeholder="Find category here" value="{{$search_value}}" name="search" id="search">
+                    <form action="{{ route('sports.index') }}" method="GET" role="search">
+                        <input type="search" class="form-control" placeholder="Find user here" value="{{$search_value}}" name="search" id="search">
                     </form>
                 </div>
             </div>
@@ -34,30 +33,32 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>S.No</th>
                     <th>Title</th>
                     <th>Content</th>
-                    <th>Url</th>
                     <th>Image</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
                     <th width="280px">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($categories as $category)
+                @foreach ($items as $sports)
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->title }}</td>
-                    <td>{{ $category->content }}</td>
-                    <td>{{ $category->url }}</td>
-                    <td><img src="/uploads/{{ $category->image }}" width="100px"></td>
+                    <td>{{ $sports->id }}</td>
+                    <td>{{ $sports->title }}</td>
+                    <td>{{ strip_tags($sports->content)}}</td>
+                    <td><img src="/uploads/{{ $sports->image }}" width="100px"></td>
+                    <td>{{ $sports->created_at}}</td>
+                    <td>{{ $sports->updated_at }}</td>
                     <td>
-                        <form action="{{ route('categories.destroy',$category->id) }}" method="Post">
-                            <a class="btn btn-success" href="{{ route('categories.show',$category->id) }}">View</a>
-                            <a class="btn btn-primary" href="{{ route('categories.edit',$category->id) }}">Edit</a>
-
+                        <form action="{{ route('sports.destroy',$sports->id) }}" method="Post">
+                            <a class="btn btn-success" href="{{ route('sports.show',$sports->id) }}">View</a>
+                            <a class="btn btn-primary" href="{{ route('sports.edit',$sports->id) }}">Edit</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
+
                         </form>
                     </td>
                 </tr>
@@ -65,7 +66,12 @@
             </tbody>
         </table>
 
+        {!! $items->links() !!}
 
     </div>
 </div>
+
+
+
+
 @stop

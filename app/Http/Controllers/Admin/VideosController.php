@@ -3,21 +3,20 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\News;
+use App\Models\Videos;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class VideosController extends Controller
 {
+    
     public function index(Request $request)
     {
-        $news = News::where('title', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
-        // $news = News::all(); 
-        // $items = News::orderBy('id', 'desc')->paginate(5);
+        $videos = Videos::where('title', 'LIKE', '%' . $request->search . '%')->orderBy('id', 'desc')->paginate(5);
+       
 
-        return view('admin.news.index', [
-            'items' => $news,
+        return view('admin.videos.index', [
+            'items' => $videos,
 
             'search_value' => $request->search
         ]);
@@ -25,25 +24,21 @@ class NewsController extends Controller
 
     public function create(Request $request)
     {
-        $categories = Category::all();
+        $videos = Videos::all();
 
 
-        return view('admin.news.create', [
-            'categories' => $categories,
+        return view('admin.videos.create', [
+            'videos' => $videos
         ]);
     }
 
     public function store(Request $request)
     {
-        print_r($request->post('category_id'));
-
-
         $request->validate([
-            'category_id' => 'required',
             'title' => 'required',
-            'slug' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10024',
+            'url' => 'required',
         ]);
 
         $input = $request->all();
@@ -55,51 +50,42 @@ class NewsController extends Controller
             $input['image'] = "$profileImage";
         }
 
-
-
         $input = [
-            'category_id' => $request->post('category_id'),
             'title' => $request->post('title'),
-            'slug' => $request->post('slug'),
-            'category' => $request->post('category'),
             'content' => $request->post('content'),
             'image' => $profileImage,
+            'url' => $request->post('url'),
             'created_by' => $request->user()->id,
             'updated_by' => $request->user()->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
 
-        News::create($input);
+        Videos::create($input);
 
-        return redirect()->route('news.index')->with('success', 'News has been created successfully.');
+        return redirect()->route('videos.index')->with('success', 'Videos has been created successfully.');
     }
 
-
-    public function show(News $news)
+    public function show(Videos $video)
     {
-        return view('admin.news.show', compact('news'));
+        return view('admin.videos.show', compact('video'));
     }
 
-    public function edit(News $news)
+    public function edit(Videos $video)
     {
-        $categories = Category::all();
-
-        return view('admin.news.edit', [
-            'news' => $news,
-            'categories' => $categories
+        return view('admin.videos.edit', [
+            'video' => $video
         ]);
     }
 
 
-    public function update(Request $request, News $news)
+    public function update(Request $request, Videos $video)
     {
         $request->validate([
-            'category_id' => 'required',
             'title' => 'required',
-            'slug' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10024',
+            'url' => 'required',
         ]);
 
         $input = $request->all();
@@ -107,8 +93,8 @@ class NewsController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $destinationPath = 'uploads/';
-            if ($news->image != ''  && $news->image != null) {
-                $image_old = public_path($destinationPath) . $news->image;
+            if ($video->image != ''  && $video->image != null) {
+                $image_old = public_path($destinationPath) . $video->image;
                 if (file_exists($image_old)) {
                     unlink($image_old);
                 }
@@ -119,14 +105,14 @@ class NewsController extends Controller
             $input['image'] = "$profileImage";
         }
 
-        $news->fill($input)->save();
+        $video->fill($input)->save();
 
-        return redirect()->route('news.index')->with('success', 'News Has Been updated successfully');
+        return redirect()->route('videos.index')->with('success', 'Videos Has Been updated successfully');
     }
 
-    public function destroy(News $news)
+    public function destroy(Videos $video)
     {
-        $news->delete();
-        return redirect()->route('news.index')->with('success', 'News has been deleted successfully');
+        $video->delete();
+        return redirect()->route('videos.index')->with('success', 'Videos has been deleted successfully');
     }
 }

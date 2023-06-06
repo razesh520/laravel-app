@@ -23,7 +23,24 @@
         <form action="{{ route('news.update', $news->id) }} " method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="row">   
+            <div class="row">  
+                
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <select class="form-control m-bot15" name="category_id">
+                            @if ($categories->count())
+                            @foreach($categories as $item)
+                            <option value="{{ $item->id }}">{{ $item->title }}</option>
+                            @endforeach
+                            @endif
+                        </select>
+
+                        @error('category_id')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Title:</strong>
@@ -42,19 +59,11 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Category:</strong>
-                        <input type="category" name="category" value="{{ $news->category }}" class="form-control" placeholder="News Category">
-                        @error('category')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
+               
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Content:</strong>
-                        <input type="text" name="content" value="{{ $news->content }}" class="form-control" placeholder="News Content">
+                        <input type="text" name="content" value="{{ $news->content }}" class="form-control" placeholder="News content">
                         @error('content')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
@@ -64,7 +73,7 @@
                     <div class="form-group">
                         <strong>Image:</strong>
                         <input type="file" name="image" value="{{ $news->image }}" class="form-control" placeholder="News Image">
-                        <img src="/images/{{ $news->image }}" width="300px">
+                        <img src="/uploads/{{ $news->image }}" width="300px">
                         @error('image')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

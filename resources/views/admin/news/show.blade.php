@@ -13,25 +13,22 @@
 
         <table boarder="1">
             <tr>
-                <th>title</th>
+                <th>Title</th>
                 <td>{{ $news->title }}</td>
             </tr>
             <tr>
-                <th>slug</th>
+                <th>Slug</th>
                 <td>{{ $news->slug}}</td>
             </tr>
+            
             <tr>
-                <th>category</th>
-                <td>{{ $news->category }}</td>
-            </tr>
-            <tr>
-                <th>content</th>
+                <th>Content</th>
                 <td>{{ $news->content }}</td>
             </tr>
             <tr>
-                <th>image</th>
+                <th>Image</th>
               <td>
-              <img src="/images/{{ $news->image }}" width="500px">
+              <img src="/uploads/{{ $news->image }}" width="500px">
               </td>
             </tr>
             <tr>

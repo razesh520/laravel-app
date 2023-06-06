@@ -81,6 +81,29 @@ list($controller, $action) = explode('@', $controllerAction);
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item <?= ($controller == 'VideosController') ? 'menu-open' : ''?>">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-newspaper"></i>
+                        <p>
+                            Manage videos
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('videos.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage videos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('videos.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create videos</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item <?= ($controller == 'MenuController') ? 'menu-open' : ''?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
@@ -100,6 +123,29 @@ list($controller, $action) = explode('@', $controllerAction);
                             <a href="{{route('menus.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create Menu</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item <?= ($controller == 'SportsController') ? 'menu-open' : ''?>">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Manage Sports
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('sports.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Sports</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('sports.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Sports</p>
                             </a>
                         </li>
                     </ul>

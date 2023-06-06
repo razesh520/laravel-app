@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -47,10 +48,29 @@ class CategoryController extends Controller
             'url' => 'required|url',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        $input = $request->all();
 
-        Category::create($request->post());
+        if ($image = $request->file('image')) {
+            $destinationPath = 'uploads';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path($destinationPath), $profileImage);
+            $input['image'] = "$profileImage";
+        }
 
-        return redirect()->route('categories.index')->with('success', 'Category has been created successfully.');
+        $input = [
+            
+            'title' => $request->post('title'),
+            'content' => $request->post('content'),
+            'url' => $request->post('url'),
+            'image' => $profileImage,
+            'created_by' => $request->user()->id,
+            'updated_by' => $request->user()->id,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ];
+
+        Category::create($input);
+
+        return redirect()->route('categories.index')->with('success', 'categories has been created successfully.');
     }
-
 }
