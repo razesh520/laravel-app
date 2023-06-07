@@ -18,8 +18,8 @@
             </tr>
 
             <tr>
-                <th>Content</th>
-                <td>{{ $menu->content }}</td>
+                <th>Position</th>
+                <td>{{ $menu->position }}</td>
             </tr>
             <tr>
                 <th>Url</th>

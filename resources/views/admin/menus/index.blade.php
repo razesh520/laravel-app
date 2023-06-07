@@ -35,8 +35,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Content</th>
+                    <th>Position</th>
                     <th>Url</th>
+                    <th>Type</th>
                     <th>Status</th>
                     <th width="280px">Action</th>
                 </tr>
@@ -46,9 +47,10 @@
                 <tr>
                     <td>{{ $menu->id }}</td>
                     <td>{{ $menu->title }}</td>
-                    <td>{{ $menu->content }}</td>
+                    <td>{{ $menu->position }}</td>
                     <td>{{ $menu->url }}</td>
-                    <td>{{ $menu->status}}</td>
+                    <td>{{ $menu->type }}</td>
+                    <td>{{ $menu->status == 'active' ? 'Active' : 'Inctive' }}</td>
                     <td>
                         <form action="{{ route('menus.destroy',$menu->id) }}" method="Post">
                             <a class="btn btn-success" href="{{ route('menus.show',$menu->id) }}">View</a>

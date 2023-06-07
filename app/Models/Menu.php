@@ -10,5 +10,6 @@ class Menu extends Model
     use HasFactory;
     // protected $table = 'menus';
 
-    protected $fillable = ['title', 'content','url', 'status', 'created_at', 'updated_at' ];
+    protected $fillable = ['title', 'position', 'url', 'status', 'type','created_at', 'updated_at'];
+
 }

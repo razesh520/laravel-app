@@ -34,9 +34,9 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Menu Content:</strong>
-                        <input type="text" name="content" value="{{ old('content') }}" class="form-control" placeholder="Menu Content">
-                        @error('content')
+                        <strong>Menu Position:</strong>
+                        <input type="text" name="position" value="{{ old('position') }}" class="form-control" placeholder="Menu Position">
+                        @error('position')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -52,11 +52,31 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Menu Status:</strong>
+                        <strong>Menu Type:</strong>
+                        <select class="form-control" type="type" name="type">
+                            <option value="menu">Menu</option>
+                            <option value="ribbon">Ribbon</option>
+                        </select>
+
+                        <!-- @error('status')
                         <input type="status" name="status" value="{{ old('status') }}" class="form-control" placeholder="Menu Status">
-                        @error('status')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
+                        @enderror -->
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Menu Status:</strong>
+                        <select class="form-control" type="status" name="status">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+
+                        <!-- @error('status')
+                        <input type="status" name="status" value="{{ old('status') }}" class="form-control" placeholder="Menu Status">
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror -->
                     </div>
                 </div>
 

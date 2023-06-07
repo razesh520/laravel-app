@@ -43,8 +43,9 @@ class MenuController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'position' => 'required',
             'url' => 'required|url',
+            'type' => 'required',
             'status' => 'required'
         ]);
 
@@ -83,8 +84,9 @@ class MenuController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'content' => 'required',
+            'position' => 'required',
             'url' => 'required|url',
+            'type' => 'required',
             'status' => 'required',
         ]);
 

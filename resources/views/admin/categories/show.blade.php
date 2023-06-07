@@ -14,30 +14,29 @@
         <table boarder="1">
             <tr>
                 <th>Title</th>
-                <td>{{ $news->title }}</td>
+                <td>{{ $category->title }}</td>
             </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ $news->slug}}</td>
-            </tr>
-            
             <tr>
                 <th>Content</th>
-                <td>{{ $news->content }}</td>
+                <td>{{ $category->content }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ $category->url }}</td>
             </tr>
             <tr>
                 <th>Image</th>
               <td>
-              <img src="/uploads/{{ $news->image }}" width="500px">
+              <img src="/uploads/{{ $category->image }}" width="500px">
               </td>
             </tr>
             <tr>
-                <th>created_at</th>
-                <td>{{ $news->created_at }}</td>
+                <th>Created_at</th>
+                <td>{{ $category->created_at }}</td>
             </tr>
             <tr>
-                <th>created_by</th>
-                <td>{{ $news->created_by }}</td>
+                <th>Updated_at</th>
+                <td>{{ $category->updated_at }}</td>
             </tr>
 
         </table>

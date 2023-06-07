@@ -14,8 +14,7 @@
                 </p>
             </div>
             <div class="d-flex">
-                <span class="mr-3 text-danger">Wed, March 4, 2020</span>
-                <span class="text-danger">30°C,London</span>
+                <span class="mr-3 text-danger">{{ now()->format('Y-m-d') }} {{ now()->format('l') }}</span>
             </div>
         </div>
     </div>
@@ -23,30 +22,35 @@
 <div class="content-wrapper">
     <div class="container">
         <div class="row" data-aos="fade-up">
-            <div class="col-xl-8 stretch-card grid-margin">
+            @foreach($news as $key=> $item)
+            @if($key==0) <div class="col-xl-8 stretch-card grid-margin">
                 <div class="position-relative">
-                    <img src="assets/images/dashboard/banner.jpg" alt="banner" class="img-fluid" />
+                    <img src="{{ asset('uploads/' . $item->image) }}" alt="banner" class="img-fluid" />
                     <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                            global news
+                        <a href="{{route('view-news',$item->id) }}">
+                            {{$item->title}}
+                        </a>
                         </div>
-                        <h1 class="mb-0">GLOBAL PANDEMIC</h1>
+                        <!-- <h1 class="mb-0">GLOBAL PANDEMIC</h1> -->
                         <h1 class="mb-2">
-                            Coronavirus Outbreak LIVE Updates: ICSE, CBSE Exams
-                            Postponed, 168 Trains
+                            {{strlen($item->content) > 20 ? substr(strip_tags($item->content),0,20)."..." : $item->content;}}
                         </h1>
                         <div class="fs-12">
-                            <span class="mr-2">Photo </span>10 Minutes ago
+                            <span class="mr-2">{{$item->slug}}</span><br>
+                            {{$item->created_at}}
                         </div>
                     </div>
                 </div>
+                @endif
+                @endforeach
             </div>
             <div class="col-xl-4 stretch-card grid-margin">
                 <div class="card bg-dark text-white">
                     <div class="card-body">
                         <h2> Latest News </h2>
                         @foreach($news as $key=> $item)
-                        @if($key<=2) <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
+                        @if($key > 0 && $key <=3 ) <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
                             <div class="pr-3">
                                 <a href="{{route('view-news',$item->id) }}">
                                     {{strlen($item->title) > 20 ? substr($item->title,0,20)."..." : $item->title;}}
@@ -97,7 +101,7 @@
                     <ul class="vertical-menu">
                         @foreach($categories as $item)
                         <li><a href="{{route ('view-categories',$item->id)}}">{{$item->title}}</a></li>
-                    @endforeach
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -119,7 +123,9 @@
                         </div>
                         <div class="col-sm-8  grid-margin">
                             <h2 class="mb-2 font-weight-600">
+                            <a href="{{route('view-news',$item->id) }}">
                                 {{$item->title}}
+                            </a>
                             </h2>
                             <div class="fs-13 mb-2">
                                 <span class="mr-2">{{$item->created_by}} </span>{{$item->created_at}}
@@ -301,12 +307,16 @@
                                     <div class="rotate-img">
                                         <img src="/uploads/{{ $item->image }}" alt="thumb" class="img-fluid" />
                                     </div>
-                                    <h2 class="mt-3 text-primary mb-2">{{$item->title}}</h2>
+                                    <h2 class="mt-3 text-primary mb-2">
+                                    <a href="{{route('view-sports',$item->id) }}">    
+                                    {{$item->title}}
+                                    </a>
+                                    </h2>
                                     <p class="fs-13 mb-1 text-muted">
                                         <span class="mr-2"> </span>
                                     </p>
                                     <p class="my-3 fs-15">
-                                        {{$item->content}}
+                                        {{strip_tags($item->content)}}
                                     </p>
                                     <a href="#" class="font-weight-600 fs-16 text-dark">{{$item->updated_at}}</a>
                                 </div>
@@ -324,7 +334,9 @@
                                             <img src="/uploads/{{ $item->image }}" alt="thumb" class="img-fluid" />
                                         </div>
                                         <p class="fs-16 font-weight-600 mb-0 mt-3">
+                                        <a href="{{route('view-sports',$item->id) }}">
                                             {{$item->title}}
+                                        </a>
                                         </p>
                                         <p class="fs-13 text-muted mb-0">
                                             <span class="mr-2">Creator</span>{{$item->created_at}}

@@ -2,7 +2,8 @@
 
 use App\Models\Menu;
 
-$menus = Menu::orderBy('id', 'desc')->get();
+$menus = Menu::orderBy('position', 'asc')->where([['status', 'active'], ['type', 'menu']])->get();
+$ribbons = Menu::orderBy('position', 'asc')->where([['status', 'active'], ['type', 'ribbon']])->get();
 ?>
 
 <!-- partial:partials/_navbar.html -->
@@ -12,39 +13,29 @@ $menus = Menu::orderBy('id', 'desc')->get();
       <div class="navbar-top">
         <div class="d-flex justify-content-between align-items-center">
           <ul class="navbar-top-left-menu">
+            @foreach ($ribbons as $key => $ribbon)
             <li class="nav-item">
-              <a href="pages/index-inner.html" class="nav-link">Advertise</a>
+              <a href="{{$ribbon->url}}" class="nav-link">{{$ribbon->title}}</a>
             </li>
-            <li class="nav-item">
-              <a href="pages/aboutus.html" class="nav-link">About</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Events</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">Write for Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">In the Press</a>
-            </li>
+            @endforeach
           </ul>
           <ul class="navbar-top-right-menu">
             <li class="nav-item">
               <a href="#" class="nav-link"><i class="mdi mdi-magnify"></i></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#" class="nav-link">Login</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">Sign in</a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
       <div class="navbar-bottom">
         <div class="d-flex justify-content-between align-items-center">
           <div>
-            <a class="navbar-brand" href="#"><img src="assets/images/logo.svg" alt="" /></a>
+            <a class="navbar-brand" href="#"><img src="/assets/images/logo.svg" alt="" /></a>
           </div>
           <div>
             <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
