@@ -1,9 +1,11 @@
 <?php
 
 use App\Models\Menu;
+use App\Models\Socials;
 
 $menus = Menu::orderBy('position', 'asc')->where([['status', 'active'], ['type', 'menu']])->get();
 $ribbons = Menu::orderBy('position', 'asc')->where([['status', 'active'], ['type', 'ribbon']])->get();
+$socials = Socials::orderBy('id', 'asc')->where('status', 'active')->get();
 ?>
 
 <!-- partial:partials/_navbar.html -->
@@ -78,21 +80,27 @@ $ribbons = Menu::orderBy('position', 'asc')->where([['status', 'active'], ['type
             </div>
           </div>
           <ul class="social-media">
+            @foreach ($socials as $item)
             <li>
-              <a href="#">
+              <a href="{{$item->facebook_link}}" target="_blank">
                 <i class="mdi mdi-facebook"></i>
               </a>
             </li>
+            @endforeach
+            @foreach ($socials as $item)
             <li>
-              <a href="#">
+              <a href="{{$item->youtube_link}}" target="_blank">
                 <i class="mdi mdi-youtube"></i>
               </a>
             </li>
+            @endforeach
+            @foreach ($socials as $item)
             <li>
-              <a href="#">
+              <a href="{{$item->twitter_link}}" target="_blank">
                 <i class="mdi mdi-twitter"></i>
               </a>
             </li>
+            @endforeach
           </ul>
         </div>
       </div>

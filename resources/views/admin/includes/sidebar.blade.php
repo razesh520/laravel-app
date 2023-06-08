@@ -150,6 +150,29 @@ list($controller, $action) = explode('@', $controllerAction);
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item <?= ($controller == 'SocialsController') ? 'menu-open' : ''?>">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Manage Socials
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('socials.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Manage Socials</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('socials.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create Socials</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="{{route('signout')}}" class="nav-link" data-method="POST">
                         <i class="fas fa-sign-out nav-icon"></i>

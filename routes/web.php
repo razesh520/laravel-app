@@ -9,6 +9,7 @@ use App\Http\Controllers\MagzineController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardsController;
+use App\Http\Controllers\Admin\SocialsController;
 use App\Http\Controllers\Admin\VideosController;
 use App\Http\Controllers\Admin\SportsController;
 use App\Http\Controllers\VideosController as VideosCtrl;
@@ -47,6 +48,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('menus', MenuController::class); 
         Route::resource('videos', VideosController::class); 
         Route::resource('sports', SportsController::class); 
+        Route::resource('socials', SocialsController::class); 
     });
     Route::match(['get', 'post'], '/signout', [AuthController::class, 'signout']);
 });

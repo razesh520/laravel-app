@@ -20,31 +20,14 @@
             {{ session('status') }}
         </div>
         @endif
-        <form action="{{ route('categories.update', $categories->id) }} " method="POST" enctype="multipart/form-data">
+        <form action="{{ route('categories.update', $category->id) }} " method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
-            <div class="row">  
-                
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <select class="form-control m-bot15" name="category_id">
-                            @if ($categories->count())
-                            @foreach($categories as $item)
-                            <option value="{{ $item->id }}">{{ $item->title }}</option>
-                            @endforeach
-                            @endif
-                        </select>
-
-                        @error('category_id')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-
+            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Title:</strong>
-                        <input type="text" name="title" value="{{ $categories->title }}" class="form-control" placeholder="News Title">
+                        <input type="text" name="title" value="{{ $category->title }}" class="form-control" placeholder="Categories Title">
                         @error('title')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
@@ -52,18 +35,8 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Slug:</strong>
-                        <input type="slug" name="slug" value="{{ $categories->slug }}" class="form-control" placeholder="News Slug">
-                        @error('slug')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-               
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
                         <strong>Content:</strong>
-                        <input type="text" name="content" value="{{ $categories->content }}" class="form-control" placeholder="News content">
+                        <input type="text" name="content" value="{{ $category->content }}" class="form-control" placeholder="Categories content">
                         @error('content')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
@@ -71,9 +44,18 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
+                        <strong>Url:</strong>
+                        <input type="text" name="url" value="{{ $category->url }}" class="form-control" placeholder="Categories content">
+                        @error('url')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
                         <strong>Image:</strong>
-                        <input type="file" name="image" value="{{ $categories->image }}" class="form-control" placeholder="News Image">
-                        <img src="/uploads/{{ $categories->image }}" width="300px">
+                        <input type="file" name="image" value="{{ $category->image }}" class="form-control" placeholder="Categories Image">
+                        <img src="/uploads/{{ $category->image }}" width="300px">
                         @error('image')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

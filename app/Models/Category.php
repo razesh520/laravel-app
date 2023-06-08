@@ -10,5 +10,11 @@ class Category extends Model
     use HasFactory;
     // protected $table = 'categories';
 
-    protected $fillable = ['title', 'content','url', 'image', 'created_at', 'updated_at' ];
+    protected $fillable = ['title', 'content', 'url', 'image', 'created_at', 'updated_at'];
+
+
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
 }

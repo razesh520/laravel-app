@@ -20,7 +20,7 @@ class SiteController extends Controller
             'news' => $news,
             'videos' => $videos,
             'sports' => $sports,
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
