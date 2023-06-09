@@ -35,6 +35,7 @@
                 <tr>
                     <th>S.No</th>
                     <th>Title</th>
+                    <th>Slug</th>
                     <th>Content</th>
                     <th>Image</th>
                     <th>Created At</th>
@@ -47,6 +48,7 @@
                 <tr>
                     <td>{{ $sports->id }}</td>
                     <td>{{ $sports->title }}</td>
+                    <td>{{ $sports->slug }}</td>
                     <td>{{ strip_tags($sports->content)}}</td>
                     <td><img src="/uploads/{{ $sports->image }}" width="100px"></td>
                     <td>{{ $sports->created_at}}</td>

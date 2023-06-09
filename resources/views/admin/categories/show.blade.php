@@ -17,6 +17,10 @@
                 <td>{{ $category->title }}</td>
             </tr>
             <tr>
+                <th>Slug</th>
+                <td>{{ $category->slug }}</td>
+            </tr>
+            <tr>
                 <th>Content</th>
                 <td>{{ $category->content }}</td>
             </tr>

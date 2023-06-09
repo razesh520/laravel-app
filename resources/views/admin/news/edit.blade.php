@@ -52,8 +52,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Slug:</strong>
-                        <input type="slug" name="slug" value="{{ $news->slug }}" class="form-control" placeholder="News Slug">
+                        <input type="hidden" name="slug" value="{{ $news->slug }}" class="form-control" placeholder="News Slug">
                         @error('slug')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

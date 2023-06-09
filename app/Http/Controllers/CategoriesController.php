@@ -12,10 +12,11 @@ class CategoriesController extends Controller
         return 'all Categories';
     } 
 
-    public function show($id)
+    public function show($slug)
     {
-        $category = Category::findOrFail($id);
-        $news = News::orderBy('id', 'desc')->where('category_id', $id)->get();
+        $category = Category::where('slug', $slug)->first();
+
+        $news = News::orderBy('id', 'desc')->where('category_id', $category->id)->get();
         return view('categories.show', [
             'category' => $category,
             'news' => $news,

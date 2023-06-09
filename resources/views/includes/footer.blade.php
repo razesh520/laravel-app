@@ -50,7 +50,7 @@ $categories = Category::orderBy('id', 'asc')->limit(5)->get();
                   </div>
                   <div class="col-9">
                     <h5 class="font-weight-600">
-                      <a href="{{route('view-news',$item->id) }}">
+                      <a href="{{route('view-news',$item->slug) }}">
                         {{($item->title)}}
                       </a>
                     </h5>
@@ -100,7 +100,7 @@ $categories = Category::orderBy('id', 'asc')->limit(5)->get();
           @foreach($categories as $item)
           <div class="footer-border-bottom pb-2">
             <div class="d-flex justify-content-between align-items-center">
-              <h5 class="mb-0 font-weight-600"><a href="{{route ('view-categories',$item->id)}}">{{$item->title}}</a></h5>
+              <h5 class="mb-0 font-weight-600"><a href="{{route ('view-categories',$item->slug)}}">{{$item->title}}</a></h5>
               <div class="count">{{$item->news->count()}}</div>
             </div>
           </div>
@@ -139,10 +139,7 @@ $categories = Category::orderBy('id', 'asc')->limit(5)->get();
         <div class="col-sm-12">
           <div class="d-sm-flex justify-content-between align-items-center">
             <div class="fs-14 font-weight-600">
-              © 2023 @ BootstrapDash. All rights reserved.
-            </div>
-            <div class="fs-14 font-weight-600">
-              <a href="https://www.bootstrapdash.com/" target="_blank" class="text-white">Bootstrap website templates</a> from Bootstrapdash
+              © 2023 @ copied by Rajesh Chaudhary.
             </div>
           </div>
         </div>

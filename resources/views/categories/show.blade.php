@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8 grid-margin">
-                                    <a href="{{route('view-news',$item->id) }}">
+                                    <a href="{{route('view-news',$item->slug) }}">
                                         <h2 class="font-weight-600 mb-2">
                                             {{$item->title}}
                                         </h2>

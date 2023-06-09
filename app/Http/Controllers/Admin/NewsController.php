@@ -41,7 +41,6 @@ class NewsController extends Controller
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
-            'slug' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10024',
         ]);
@@ -97,7 +96,6 @@ class NewsController extends Controller
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
-            'slug' => 'required',
             'content' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10024',
         ]);

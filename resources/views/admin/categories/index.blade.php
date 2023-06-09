@@ -36,6 +36,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Slug</th>
                     <th>Content</th>
                     <th>Url</th>
                     <th>Image</th>
@@ -47,6 +48,7 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->title }}</td>
+                    <td>{{ $category->slug }}</td>
                     <td>{{ $category->content }}</td>
                     <td>{{ $category->url }}</td>
                     <td><img src="/uploads/{{ $category->image }}" width="100px"></td>

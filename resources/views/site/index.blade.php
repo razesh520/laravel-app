@@ -28,7 +28,7 @@
                     <img src="{{ asset('uploads/' . $item->image) }}" alt="banner" class="img-fluid" />
                     <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
-                        <a href="{{route('view-news',$item->id) }}">
+                        <a href="{{route('view-news',$item->slug) }}">
                             {{$item->title}}
                         </a>
                         </div>
@@ -52,7 +52,7 @@
                         @foreach($news as $key=> $item)
                         @if($key > 0 && $key <=3 ) <div class="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
                             <div class="pr-3">
-                                <a href="{{route('view-news',$item->id) }}">
+                                <a href="{{route('view-news',$item->slug) }}">
                                     {{strlen($item->title) > 20 ? substr($item->title,0,20)."..." : $item->title;}}
                                 </a>
                                 <div class="fs-12">
@@ -100,7 +100,7 @@
                     <h2>Category</h2>
                     <ul class="vertical-menu">
                         @foreach($categories as $item)
-                        <li><a href="{{route ('view-categories',$item->id)}}">{{$item->title}}</a></li>
+                        <li><a href="{{route ('view-categories',$item->slug)}}">{{$item->title}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -123,7 +123,7 @@
                         </div>
                         <div class="col-sm-8  grid-margin">
                             <h2 class="mb-2 font-weight-600">
-                            <a href="{{route('view-news',$item->id) }}">
+                            <a href="{{route('view-news',$item->slug) }}">
                                 {{$item->title}}
                             </a>
                             </h2>
@@ -308,7 +308,7 @@
                                         <img src="/uploads/{{ $item->image }}" alt="thumb" class="img-fluid" />
                                     </div>
                                     <h2 class="mt-3 text-primary mb-2">
-                                    <a href="{{route('view-sports',$item->id) }}">    
+                                    <a href="{{route('view-sports',$item->slug) }}">    
                                     {{$item->title}}
                                     </a>
                                     </h2>
@@ -334,7 +334,7 @@
                                             <img src="/uploads/{{ $item->image }}" alt="thumb" class="img-fluid" />
                                         </div>
                                         <p class="fs-16 font-weight-600 mb-0 mt-3">
-                                        <a href="{{route('view-sports',$item->id) }}">
+                                        <a href="{{route('view-sports',$item->slug) }}">
                                             {{$item->title}}
                                         </a>
                                         </p>

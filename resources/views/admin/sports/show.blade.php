@@ -17,6 +17,10 @@
                 <td>{{ $sport->title }}</td>
             </tr>
             <tr>
+                <th>Slug</th>
+                <td>{{ $sport->slug }}</td>
+            </tr>
+            <tr>
                 <th>Content</th>
                 <td>{{ $sport->content }}</td>
             </tr>

@@ -44,6 +44,14 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
+                        <input type="hidden" name="status" value="{{ $category->status }}" class="form-control" placeholder="Categories status">
+                        @error('status')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
                         <strong>Url:</strong>
                         <input type="text" name="url" value="{{ $category->url }}" class="form-control" placeholder="Categories content">
                         @error('url')

@@ -12,9 +12,10 @@ class NewsController extends Controller
         return 'all News';
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $news = News::findOrFail($id);
+
+        $news = News::where('slug', $slug)->first();
         return view('news.show', compact('news'));
     }
 }

@@ -55,13 +55,13 @@ Route::prefix('admin')->group(function () {
 Route::get('', [SiteController::class, 'index'])->name('index');
 Route::get('/about', [SiteController::class, 'about'])->name('about');
 Route::get('/news', [NewsCtrl::class, 'index'])->name('all-news');
-Route::get('/news/{id}', [NewsCtrl::class, 'show'])->name('view-news');
+Route::get('/news/{slug}', [NewsCtrl::class, 'show'])->name('view-news');
 Route::get('/videos', [VideosCtrl::class, 'index'])->name('all-videos');
 Route::get('/videos/{id}', [VideosCtrl::class, 'show'])->name('view-videos');
 Route::get('/categories', [CategoriesCtrl::class, 'index'])->name('all-categories');
-Route::get('/categories/{id}', [CategoriesCtrl::class, 'show'])->name('view-categories');
+Route::get('/categories/{slug}', [CategoriesCtrl::class, 'show'])->name('view-categories');
 Route::get('/sports', [SportsCtrl::class, 'index'])->name('all-sports');
-Route::get('/sports/{id}', [SportsCtrl::class, 'show'])->name('view-sports');
+Route::get('/sports/{slug}', [SportsCtrl::class, 'show'])->name('view-sports');
 Route::get('/magzine', [MagzineController::class, 'index'])->name('magzine');
 
 

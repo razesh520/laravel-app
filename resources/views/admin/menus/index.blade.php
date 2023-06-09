@@ -55,7 +55,7 @@
                         <form action="{{ route('menus.destroy',$menu->id) }}" method="Post">
                             <a class="btn btn-success" href="{{ route('menus.show',$menu->id) }}">View</a>
                             <a class="btn btn-primary" href="{{ route('menus.edit',$menu->id) }}">Edit</a>
-                       
+
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>

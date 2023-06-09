@@ -12,9 +12,11 @@
                 <h2>Manage Socials</h2>
             </div>
             <div class="col-md-12 mb-5">
+                @if ($socials->count() == 0)
                 <div clas="col-md-6" style="float:left;">
                     <a class="btn btn-success" href="{{ route('socials.create') }}"> Create Socials</a>
                 </div>
+                @endif
                 <div class="col-md-6" style="float:right;">
                     <form action="{{ route('socials.index') }}" method="GET" role="search">
                         <input type="search" class="form-control" placeholder="Find socials here" value="{{$search_value}}" name="search" id="search">
@@ -55,10 +57,8 @@
                         <form action="{{ route('socials.destroy',$social->id) }}" method="Post">
                             <a class="btn btn-success" href="{{ route('socials.show',$social->id) }}">View</a>
                             <a class="btn btn-primary" href="{{ route('socials.edit',$social->id) }}">Edit</a>
-                       
+
                             @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </td>
                 </tr>

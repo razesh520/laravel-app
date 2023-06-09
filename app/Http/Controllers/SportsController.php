@@ -12,9 +12,9 @@ class SportsController extends Controller
         return 'all Sports';
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $sports = Sports::findOrFail($id);
+        $sports = Sports::where('slug', $slug)->first();
         return view('sports.show', compact('sports'));
     }
 }
